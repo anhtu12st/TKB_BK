@@ -1,0 +1,14 @@
+---------------------------------WEB-----------------------------------------
+Function: 
+  - Login: signIn ( -> create acc if can't signIn)
+  - Logout
+  - Refresh: 
+
+
+$ emulator -list-avds
+Pixel_3_API_28
+
+$ emulator -avd 'Pixel_3_API_28'
+emulator: INFO: boot completed
+emulator: INFO: boot time 34488 ms
+emulator: Increasing screen off timeout, logcat buffer size to 2M.
