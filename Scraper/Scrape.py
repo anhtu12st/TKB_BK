@@ -1,6 +1,7 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+from Firestore import updateData, getPrev
 
 session = requests.session()
 ##################################################################
@@ -32,7 +33,11 @@ tb_url = 'https://mybk.hcmut.edu.vn/stinfo/lichthi/ajax_lichhoc'
 res = session.post(tb_url, data={'_token': token})
 
 data = json.loads(res.text)[0]
-print('Last update:', data['ngay_cap_nhat'])
+if getPrev() == data['ngay_cap_nhat']:
+    print("Updated Already.")
+else:
+    print('Last update:', data['ngay_cap_nhat'])
 
 with open('data.json', 'w') as fs:
     fs.write(json.dumps(data))
+    updateData(json.dumps(data))
