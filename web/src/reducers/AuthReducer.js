@@ -33,10 +33,15 @@ export const authReducer = (state, action) => {
     case "LOGIN":
       return state;
     case "LOGOUT":
+      localStorage.removeItem("data");
+      console.log(localStorage.getItem("data"));
       auth.signOut();
       return state;
     case "CURRENT_USER":
-      if (action.payload.currentUser !== null)
+      if (action.payload.currentUser !== null) {
+        let json = action.payload;
+        localStorage.setItem("data", JSON.stringify(json));
+        console.log("PAYLOAD:", json);
         return {
           status: "login",
           data: {
@@ -45,7 +50,7 @@ export const authReducer = (state, action) => {
           },
           error: null,
         };
-      else
+      } else {
         return {
           status: "logout",
           data: {
@@ -54,6 +59,7 @@ export const authReducer = (state, action) => {
           },
           error: null,
         };
+      }
     default:
       return state;
   }

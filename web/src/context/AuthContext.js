@@ -7,6 +7,16 @@ function AuthProvider({ children }) {
   const [authState, dispatch] = useReducer(authReducer, initState);
 
   useEffect(() => {
+    const getLocalData = async () => {
+      let data = await JSON.parse(localStorage.getItem("data"));
+      if (data) {
+        console.log("localDATA", data);
+        dispatch({
+          type: "CURRENT_USER",
+          payload: { currentUser: data.currentUser, tkb: data.tkb },
+        });
+      }
+    };
     const getData = async (user) => {
       if (user !== null) {
         const cityRef = db.collection("tkb").doc(user.uid);
@@ -20,6 +30,9 @@ function AuthProvider({ children }) {
         return null;
       }
     };
+
+    getLocalData();
+
     auth.onAuthStateChanged(async (user) => {
       const tkb = await getData(user);
 
