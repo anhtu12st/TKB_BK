@@ -38,6 +38,9 @@ if getPrev() == data['ngay_cap_nhat']:
 else:
     print('Last update:', data['ngay_cap_nhat'])
 
+# while True:
+#     print(data)
+
 with open('data.json', 'w') as fs:
     fs.write(json.dumps(data))
     updateData(json.dumps(data))
