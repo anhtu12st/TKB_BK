@@ -12,13 +12,13 @@ function ListSchedule() {
   const [numDate, setNumDate] = useState(0);
 
   const dayName = {
-    2: "Monday",
-    3: "Tuesday",
-    4: "Wednesday",
-    5: "Thursday",
-    6: "Friday",
-    7: "Saturday",
-    8: "Sunday",
+    2: "Mon",
+    3: "Tue",
+    4: "Wed",
+    5: "Thu",
+    6: "Fri",
+    7: "Sat",
+    8: "Sun",
   };
 
   let date1 = 0,
@@ -73,11 +73,13 @@ function ListSchedule() {
           <NavigateNextIcon />
         </Button>
       </div>
-      {currentUser && subjects.length
-        ? subjects.map((subject) => (
-            <Schedule key={subject["ma_mh"]} subject={subject} />
-          ))
-        : null}
+      {currentUser && subjects.length ? (
+        subjects.map((subject) => (
+          <Schedule key={subject["ma_mh"]} subject={subject} />
+        ))
+      ) : (
+        <div className="schedule">Resting day</div>
+      )}
     </div>
   );
 }
