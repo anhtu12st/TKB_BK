@@ -38,6 +38,8 @@ if getPrev() == data['ngay_cap_nhat']:
 else:
     print('Last update:', data['ngay_cap_nhat'])
 
+# print(data)
+
 # while True:
 #     print(data)
 
