@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA54itehR1_xpTBWW9ES4-vFhGeGz8Iet0",
-  authDomain: "tkbbachkhoa.firebaseapp.com",
-  databaseURL: "https://tkbbachkhoa.firebaseio.com",
-  projectId: "tkbbachkhoa",
-  storageBucket: "tkbbachkhoa.appspot.com",
-  messagingSenderId: "716822316909",
-  appId: "1:716822316909:web:b5e831ac31ff3a8005bc64",
+  apiKey: "AIzaSyCdoRQK51lsDJLjLwwIpzFaruIhYRoTvyY",
+  authDomain: "tkbbk-d4b8f.firebaseapp.com",
+  projectId: "tkbbk-d4b8f",
+  storageBucket: "tkbbk-d4b8f.appspot.com",
+  messagingSenderId: "725846585020",
+  appId: "1:725846585020:web:2ad63637896efd96ca2ab9",
+  measurementId: "G-C2S4F8BJ3S"
 };
 
 app.initializeApp(firebaseConfig);
@@ -41,7 +41,6 @@ export const authReducer = (state, action) => {
       if (action.payload.currentUser !== null) {
         let json = action.payload;
         localStorage.setItem("data", JSON.stringify(json));
-        console.log("PAYLOAD:", json);
         return {
           status: "login",
           data: {

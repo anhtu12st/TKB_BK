@@ -1,5 +1,5 @@
-admin.json
 Scrapy/__pycache__/
 .DS_Store
 Scrapy/__pycache__/Firestore.cpython-38.pyc
 data.json
+web/yarn.lock

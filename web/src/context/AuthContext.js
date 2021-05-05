@@ -10,7 +10,6 @@ function AuthProvider({ children }) {
     const getLocalData = async () => {
       let data = await JSON.parse(localStorage.getItem("data"));
       if (data) {
-        console.log("localDATA", data);
         dispatch({
           type: "CURRENT_USER",
           payload: { currentUser: data.currentUser, tkb: data.tkb },
@@ -19,8 +18,8 @@ function AuthProvider({ children }) {
     };
     const getData = async (user) => {
       if (user !== null) {
-        const cityRef = db.collection("tkb").doc(user.uid);
-        const doc = await cityRef.get();
+        const doc_ref = await db.collection("tkb").doc(user.uid);
+        const doc = await doc_ref.get();
         if (!doc.exists) {
           return null;
         } else {
@@ -35,7 +34,7 @@ function AuthProvider({ children }) {
 
     auth.onAuthStateChanged(async (user) => {
       const tkb = await getData(user);
-
+      console.log({ currentUser: user, tkb })
       dispatch({
         type: "CURRENT_USER",
         payload: { currentUser: user, tkb },
